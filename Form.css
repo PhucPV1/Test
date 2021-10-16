@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#order,
+#fill-info {
+  background-color: #a0b3f2;
+  width: 500px;
+  text-align: center;
+  padding: 5px 30px;
+  border: 1px black solid;
+}
+.fillrow {
+  width: 500px;
+  display: flex;
+}
+#fillrowcon {
+  width: 50%;
+  margin: 0 auto 0 20px;
+}
+#fill {
+  width: 500px;
+}
+#order,
+#fill {
+  margin: 20px auto;
+}
+.fillrow:nth-child(2),
+.fillrow:nth-child(3),
+.fillrow:nth-child(4),
+.fillrow:nth-child(5),
+.fillrow:nth-child(6),
+.fillrow:nth-child(7),
+.fillrow:nth-child(8),
+.fillrow:nth-child(9) {
+  border-bottom: 1px black solid;
+  border-left: 1px black solid;
+  border-right: 1px black solid;
+}
+.name,
+.address,
+.product,
+.price,
+.quantity,
+.amount,
+.payment,
+.submit {
+  border-right: 1px black solid;
+  padding: 10px 0;
+}
+.button-name,
+.button-address,
+.button-product,
+.button-price,
+.button-quantity,
+.button-amount,
+.button-payment,
+.reset {
+  padding: 10px 0;
+}
+#order {
+  margin-top: 80px;
+}
