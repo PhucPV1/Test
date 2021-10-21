@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <style type="text/css">
+      .container {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+      .child {
+        display: flex;
+        margin: 20px;
+      }
+      input {
+        font-size: 16px;
+      }
+      .text-title {
+        font-size: 20px;
+        font-weight: bold;
+        width: 15%;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="get">
+      <div class="container" id="input">
+        <div class="header">
+          <h1>Body Mass Index</h1>
+        </div>
+        <div class="child">
+          <span class="text-title">Name :</span>
+          <input onkeyup="checkData()" type="text" name="name" id="name" placeholder="Enter Name" size="50" />
+        </div>
+        <div class="child">
+          <span class="text-title">Sex :</span>
+          <input checked type="radio" name="sex" id="male" placeholder="Enter Name" style="margin-right: 10px" />
+          <label for="male">Male</label>
+          <input type="radio" name="sex" id="female" placeholder="Enter Name" style="margin-right: 10px" />
+          <label for="female">Female</label>
+        </div>
+        <div class="child">
+          <span class="text-title">Weight :</span>
+          <input onkeyup="checkData()" type="number" name="Weight" id="Weight" placeholder="Enter Weight" size="30" />
+        </div>
+        <div class="child">
+          <span class="text-title">Height :</span>
+          <input onkeyup="checkData()" type="number" name="Height" id="Height" placeholder="Enter Height" size="30" />
+        </div>
+        <div class="child">
+          <span class="text-title">Your Age :</span>
+          <select onchange="checkData()" name="agegroup" id="agegroup">
+            <option value="0">--Pls Seclect--</option>
+            <option value="1">6-16</option>
+            <option value="2">17-25</option>
+            <option value="3">26+</option>
+          </select>
+        </div>
+        <div class="child">
+          <span class="text-title"></span>
+          <input
+            onclick="submitbutton()"
+            type="button"
+            id="Submit"
+            value="Calculate"
+            style="margin-right: 20px"
+            disabled
+          />
+          <input onclick="disablebutton()" type="reset" id="Reset" value="Reset" disabled />
+        </div>
+      </div>
+    </form>
+    <!-- div kết quả -->
+    <form>
+      <div class="container" id="result" style="display: none">
+        <div class="header">
+          <h1>Registration Completed</h1>
+        </div>
+        <div class="child">
+          <span class="text-title">Your Name :</span>
+          <label for="" id="name-result">NULL</label>
+        </div>
+        <div class="child">
+          <span class="text-title">Sex :</span>
+          <label for="" id="sex-result">NULL</label>
+        </div>
+        <div class="child">
+          <span class="text-title">Weight :</span>
+          <label for="" id="weight-result">NULL</label>
+        </div>
+        <div class="child">
+          <span class="text-title">Height :</span>
+          <label for="" id="height-result">NULL</label>
+        </div>
+        <div class="child">
+          <span class="text-title">Your Age :</span>
+          <label for="" id="age-result">NULL</label>
+        </div>
+      </div>
+    </form>
+    <script type="text/javascript">
+      function checkData() {
+        var nametag = document.getElementById("name").value
+        var Weighttag = document.getElementById("Weight").value
+        var Heighttag = document.getElementById("Height").value
+        var agegrouptag = document.getElementById("agegroup").value
+        var resettag = document.getElementById("Reset")
+        var submittag = document.getElementById("Submit")
+        if (nametag != "" || Heighttag != "" || (Weighttag != "" && agegrouptag != 0)) {
+          resettag.disabled = false
+        } else {
+          resettag.disabled = true
+        }
+        if (nametag != "" && Heighttag != "" && Weighttag != "" && agegrouptag != 0) {
+          submittag.disabled = false
+        } else {
+          submittag.disabled = true
+        }
+      }
+      function disablebutton() {
+        var resettag = document.getElementById("Reset")
+        var submittag = document.getElementById("Submit")
+        resettag.disabled = true
+      }
+      function submitbutton() {
+        var inputdiv = document.getElementById("input")
+        var resultdiv = document.getElementById("result")
+        inputdiv.style.display = "none"
+        resultdiv.style.display = ""
+        /* lấy dữ liệu từ form nhập */
+        var nameresult = document.getElementById("name").value
+        var Weightresult = document.getElementById("Weight").value
+        var Heightresult = document.getElementById("Height").value
+        var ageresult = document.getElementById("agegroup").value
+        if ((document.getElementById("male").checked = true)) {
+          sexresult = "Male"
+        }
+        /* hiển thị kết quả */
+        document.getElementById("name-result").innerHTML = nameresult
+        document.getElementById("sex-result").innerHTML = sexresult
+        document.getElementById("weight-result").innerHTML = Weightresult
+        document.getElementById("height-result").innerHTML = Heightresult
+        document.getElementById("age-result").innerHTML = ageresult
+      }
+    </script>
+  </body>
+</html>
