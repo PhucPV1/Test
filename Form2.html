@@ -136,8 +136,9 @@
         var Weightresult = document.getElementById("Weight").value
         var Heightresult = document.getElementById("Height").value
         var ageresult = document.getElementById("agegroup").value
-        if ((document.getElementById("male").checked = true)) {
-          sexresult = "Male"
+        var sexresult = "Male"
+        if (document.getElementById("female").checked) {
+          sexresult = "Female"
         }
         /* hiển thị kết quả */
         document.getElementById("name-result").innerHTML = nameresult
