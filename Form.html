@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="Form.css" />
+    <link rel="stylesheet" href="form+script.css" />
     <script type="text/javascript">
     function selectunitprice() {
         var qq = document.getElementById("frm_productname").value;
@@ -23,6 +23,10 @@
         /////////////////// amount = quantity * unitprice
         var ee = document.getElementById("frm_quantity").value;
         document.getElementById("frm_amount").value = ee * document.getElementById("frm_unitprice").value;
+    }
+    function soluong(){
+      var ee = document.getElementById("frm_quantity").value;
+      document.getElementById("frm_amount").value = ee * document.getElementById("frm_unitprice").value;
     }
     /////////////////// hiện thông báo 
     function hamsubmit() {
@@ -71,12 +75,12 @@
       <div class="fillrow" id="fill-quantity">
         <div id="fillrowcon" class="quantity">quantity</div>
         <div id="fillrowcon" class="button-quantity">
-          <input id="frm_quantity" type="text" name="" required placeholder="nhập số lượng" value="0" />
+          <input onchange="soluong()" id="frm_quantity" type="text" name="" required placeholder="nhập số lượng" value="0" />
         </div>
       </div>
       <div class="fillrow" id="fill-amount">
         <div id="fillrowcon" class="amount">amount</div>
-        <div id="fillrowcon" class="button-amount"><input id="frm_amount" type="text" name=""  placeholder="nhập số lượng"  value="0" /></div>
+        <div id="fillrowcon" class="button-amount"><input id="frm_amount" type="text" name=""  placeholder="nhập số lượng"  value="0" disabled /></div>
       </div>
       <div class="fillrow" id="fill-payment">
         <div id="fillrowcon" class="payment">payment mode</div>
