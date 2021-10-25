@@ -70,7 +70,7 @@
             style="margin-right: 20px"
             disabled
           />
-          <input onclick="disablebutton()" type="reset" id="Reset" value="Reset" disabled />
+          <input type="reset" id="Reset" value="Reset" disabled />
         </div>
       </div>
     </form>
@@ -110,7 +110,7 @@
         var agegrouptag = document.getElementById("agegroup").value
         var resettag = document.getElementById("Reset")
         var submittag = document.getElementById("Submit")
-        if (nametag != "" || Heighttag != "" || (Weighttag != "" && agegrouptag != 0)) {
+        if (nametag != "" || Heighttag != "" || Weighttag != "" || agegrouptag != 0) {
           resettag.disabled = false
         } else {
           resettag.disabled = true
@@ -120,11 +120,6 @@
         } else {
           submittag.disabled = true
         }
-      }
-      function disablebutton() {
-        var resettag = document.getElementById("Reset")
-        var submittag = document.getElementById("Submit")
-        resettag.disabled = true
       }
       function submitbutton() {
         var inputdiv = document.getElementById("input")
