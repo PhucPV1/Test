@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+  <body>
+    <div class="w3-container w3-teal w3-center">
+      <h1>tiêu đề website</h1>
+    </div>
+    <div class="modal w3-container w3-panel">
+      <button onclick="openmodal()" class="w3-button w3-red w3-round-large">Open Modal</button>
+    </div>
+    <div id="modal" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+        <header class="w3-container w3-center w3-teal">
+          <h2>Tiêu đề Modal</h2>
+          <span onclick="closemodal()" class="w3-button w3-display-topright">&times;</span>
+        </header>
+        <div class="w3-container"></div>
+        <p>Nội dung Modal</p>
+        <p>Form hoặc các thông báo</p>
+        <footer class="w3-teal w3-container w3-center">Footer Modal</footer>
+      </div>
+    </div>
+    <div class="w3-container">
+      <div class="w3-bar w3-teal">
+        <button onclick="opentabs('tab1')" class="w3-bar-item w3-button">Tab01</button>
+        <button onclick="opentabs('tab2')" class="w3-bar-item w3-button">Tab02</button>
+        <button onclick="opentabs('tab3')" class="w3-bar-item w3-button">Tab03</button>
+      </div>
+      <div id="tab1" class="w3-container w3-border tabs">
+        <h3>Nội dung tab 01</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil reiciendis excepturi accusantium! Expedita
+          odio quae velit. Ducimus qui in veniam, eius incidunt pariatur quae animi, quis officia earum dignissimos sed?
+        </p>
+      </div>
+      <div id="tab2" style="display: none" class="w3-container w3-border tabs">
+        <h3>Nội dung tab 02</h3>
+        <p>
+          2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil reiciendis excepturi accusantium! Expedita
+          odio quae velit. Ducimus qui in veniam, eius incidunt pariatur quae animi, quis officia earum dignissimos sed?
+        </p>
+      </div>
+      <div id="tab3" style="display: none" class="w3-container w3-border tabs">
+        <h3>Nội dung tab 03</h3>
+        <p>
+          3 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil reiciendis excepturi accusantium! Expedita
+          odio quae velit. Ducimus qui in veniam, eius incidunt pariatur quae animi, quis officia earum dignissimos sed?
+        </p>
+      </div>
+    </div>
+
+    <script>
+      //open close modal
+      function openmodal() {
+        document.getElementById("modal").style.display = "block"
+      }
+      function closemodal() {
+        document.getElementById("modal").style.display = "none"
+      }
+      // open tabs
+      function opentabs(tabName) {
+        var x = document.getElementsByClassName("tabs")
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none"
+        }
+        document.getElementById(tabName).style.display = "block"
+      }
+    </script>
+  </body>
+</html>
