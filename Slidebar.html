@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+  <body>
+    <div class="w3-content w3-display-container">
+      <img
+        src="https://wttc.org/DesktopModules/MVC/NewsArticleList/images/141_20201013185512_Consumer%20Survey%20Finds%2070%20Percent%20of%20Travelers%20Plan%20to%20Holiday%20in%202021.jpg"
+        alt=""
+        width="100%"
+        height="600px"
+        class="slide"
+      />
+      <img
+        src="https://image.freepik.com/free-photo/female-tourists-hand-have-happy-travel-map_1150-7411.jpg"
+        alt=""
+        width="100%"
+        height="600px"
+        class="slide"
+      />
+      <img
+        src="https://gtaphotographyclasses.com/wp-content/uploads/2019/03/Joseph-Pearson.png"
+        alt=""
+        width="100%"
+        height="600px"
+        class="slide"
+      />
+      <img
+        src="https://zyroassets.s3.us-east-2.amazonaws.com/_SITE-ASSETS/d95NJzw1qvuNrKwk/ogimage.jpg"
+        alt=""
+        width="100%"
+        height="600px"
+        class="slide"
+      />
+      <button class="w3-button w3-teal w3-display-left" onclick="plus(-1)">&#10094</button>
+      <button class="w3-button w3-teal w3-display-right" onclick="plus(1)">&#10095</button>
+    </div>
+    <script>
+        var index = 1
+        show(index)
+        function plus(n) {
+            show(index += n)
+        }
+        function show(n) {
+            var i
+            var x=document.getElementsByClassName("slide")
+            if (n > x.length) 
+                index = 1
+            if (n < 1)
+                index = x.length
+            for (i=0;i<x.length;i++) {
+                x[i].style.display= "none"
+            }
+            x[index-1].style.display= "block"
+        }
+    </script>
+  </body>
+</html>
