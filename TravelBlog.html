@@ -17,6 +17,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
       #menu {
         background-color: teal;
@@ -45,12 +46,12 @@
         text-align: center;
         display: none;
         position: absolute;
-        background-color: teal;
+        background-color: rgba(0, 128, 128, 0.856);
         z-index: 1;
       }
-      #menu > li:hover .submenu {
+      /* #menu > li:hover .submenu {
         display: block;
-      }
+      } */
       a {
         text-decoration: none;
       }
@@ -104,7 +105,12 @@
           </ul>
         </li>
         <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="">Contact</a>
+        <ul class="submenu">
+          <li><a href="">Email Us</a></li>
+          <li><a href="">Call</a></li>
+        </ul>
+        </li>
         <li><a onclick="openmodal()">Login</a></li>
       </ul>
     </div>
@@ -229,6 +235,14 @@
       function closemodal() {
         document.getElementById("modal").style.display = "none"
       }
+      $(document).ready(function(){
+        $("#menu li").hover(function(){
+          $(this).find("ul:first").slideDown(500)
+        }, function (){
+          $(this).find("ul:first").hide(300)
+        }
+        )
+      })
     </script>
   </body>
 </html>
