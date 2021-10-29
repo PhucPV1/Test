@@ -64,6 +64,10 @@
       i {
         color: #2f718f
       }
+      #menu li a,.submenu li a {
+        display:block;
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -255,7 +259,7 @@
         $("#menu li").hover(function(){
           $(this).find("ul:first").slideDown(550)
         }, function (){
-          $(this).find("ul:first").hide(400)
+          $(this).find("ul:first").slideUp(550)
         }
         )
       })
