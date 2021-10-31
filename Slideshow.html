@@ -5,59 +5,107 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <style>
+      .menu {
+        background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+        display: flex;
+      }
+      .menu li {
+        list-style-type: none;
+        font-size: 20px;
+        text-align: center;
+        padding: 20px;
+        width: 1000px;
+        cursor: pointer;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      .imgnum {
+        width: 800px;
+        height: 500px;
+        object-fit: cover;
+        order: 1;
+      }
+      .slidebar {
+        display: flex;
+        /* width: fit-content; */
+        align-items: center;
+        justify-content: center;
+      }
+      .leftbt {
+        order:0;
+        height: 30px;
+        width: 30px;
+        transform: translateX(30px);
+        cursor: pointer;
+        border: transparent 1px solid;
+        background-color: rgba(255, 255, 255, 0.425);
+      }
+      .rightbt {
+        order: 2;
+        height: 30px;
+        width: 30px;
+        transform: translateX(-30px);
+        cursor: pointer;
+        border: transparent 1px solid;
+        background-color: rgba(255, 255, 255, 0.425);
+      }
+      .leftbt:hover, .rightbt:hover {
+        background-image: linear-gradient(to bottom right, #12c2e9d0, #c471edc5);
+      }
+    </style>
   </head>
   <body>
-    <div class="w3-content w3-display-container">
+    <div>
+      <ul class="menu">
+        <li><a href="">Menu</a></li>
+        <li><a href="">User</a></li>
+        <li><a href="">Login</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </div>
+    <div class="slidebar">
       <img
-        src="https://wttc.org/DesktopModules/MVC/NewsArticleList/images/141_20201013185512_Consumer%20Survey%20Finds%2070%20Percent%20of%20Travelers%20Plan%20to%20Holiday%20in%202021.jpg"
+        src="https://www.roadaffair.com/wp-content/uploads/2017/10/woman-boat-ocean-shutterstock_643556467-1024x680.jpg"
         alt=""
-        width="100%"
-        height="600px"
-        class="slide"
+        class="imgnum"
       />
       <img
-        src="https://image.freepik.com/free-photo/female-tourists-hand-have-happy-travel-map_1150-7411.jpg"
+        src="https://images.squarespace-cdn.com/content/v1/5a87961cbe42d637c54cab93/1588512840142-HRQ6YJMWSH19K13IJDKK/how-traveling-can-change-your-life.jpg?format=1000w"
         alt=""
-        width="100%"
-        height="600px"
-        class="slide"
+        class="imgnum"
       />
       <img
-        src="https://gtaphotographyclasses.com/wp-content/uploads/2019/03/Joseph-Pearson.png"
+        src="https://www.gettingstamped.com/wp-content/uploads/2017/12/Summer-Island-Maldives-honeymoon-Couple-Travel-800x530.jpg"
         alt=""
-        width="100%"
-        height="600px"
-        class="slide"
+        class="imgnum"
       />
       <img
-        src="https://zyroassets.s3.us-east-2.amazonaws.com/_SITE-ASSETS/d95NJzw1qvuNrKwk/ogimage.jpg"
+        src="https://d2rdhxfof4qmbb.cloudfront.net/wp-content/uploads/20190301180447/iStock-506598655.jpg"
         alt=""
-        width="100%"
-        height="600px"
-        class="slide"
+        class="imgnum"
       />
-      <button class="w3-button w3-teal w3-display-left" onclick="plus(-1)">&#10094</button>
-      <button class="w3-button w3-teal w3-display-right" onclick="plus(1)">&#10095</button>
+      <button onclick="plusbt(-1)" class="leftbt">&#10094</button>
+      <button onclick="plusbt(+1)" class="rightbt">&#10095</button>
     </div>
     <script>
-        var index = 1
-        show(index)
-        function plus(n) {
-            show(index += n)
-        }
-        function show(n) {
-            var i
-            var x=document.getElementsByClassName("slide")
-            if (n > x.length) 
-                index = 1
-            if (n < 1)
-                index = x.length
-            for (i=0;i<x.length;i++) {
-                x[i].style.display= "none"
-            }
-            x[index-1].style.display= "block"
-        }
+      var index =1
+      showpic(index)
+      function plusbt (n) {
+        showpic(index += n)
+      }
+      function showpic (n) {
+        x= document.getElementsByClassName("imgnum");
+        for (i=0;i<x.length;i++) {
+          x[i].style.display = "none";}
+          if (index>x.length) index=1;
+          if (index<1) index = x.length;
+        
+        x[index - 1].style.display = "block"
+      }
     </script>
   </body>
 </html>
