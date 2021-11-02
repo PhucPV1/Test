@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        height: 150px;
+        width: 200px;
+        object-fit: cover;
+      }
+      .imagesmall {
+        width: 20%;
+      }
+      .imagelarge {
+        width: 80%;
+      }
+      .main {
+        display: flex;
+        align-items: stretch;
+      }
+      .imgbig {
+        width: 100%;
+        height: 613px;
+      }
+      .imgnum {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="imagesmall">
+        <img
+          onclick="changeimage('img1')"
+          src="https://www.roadaffair.com/wp-content/uploads/2017/10/woman-boat-ocean-shutterstock_643556467-1024x680.jpg"
+          alt=""
+          class="imgnum"
+          id="img1"
+        />
+        <img
+          onclick="changeimage('img2')"
+          src="https://images.squarespace-cdn.com/content/v1/5a87961cbe42d637c54cab93/1588512840142-HRQ6YJMWSH19K13IJDKK/how-traveling-can-change-your-life.jpg?format=1000w"
+          alt=""
+          class="imgnum"
+          id="img2"
+        />
+        <img
+          onclick="changeimage('img3')"
+          src="https://www.gettingstamped.com/wp-content/uploads/2017/12/Summer-Island-Maldives-honeymoon-Couple-Travel-800x530.jpg"
+          alt=""
+          class="imgnum"
+          id="img3"
+        />
+        <img
+          onclick="changeimage('img4')"
+          src="https://d2rdhxfof4qmbb.cloudfront.net/wp-content/uploads/20190301180447/iStock-506598655.jpg"
+          alt=""
+          class="imgnum"
+          id="img4"
+        />
+      </div>
+      <div class="imagelarge">
+        <img
+          class="imgbig"
+          id="imgbig_id"
+          src="https://www.roadaffair.com/wp-content/uploads/2017/10/woman-boat-ocean-shutterstock_643556467-1024x680.jpg"
+          alt=""
+        />
+        <script>
+          function changeimage(img_no) {
+            let x = document.getElementById(img_no).getAttribute("src")
+            document.getElementById("imgbig_id").setAttribute("src", x)
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
