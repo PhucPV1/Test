@@ -1,0 +1,141 @@
+@import url(https://www.w3schools.com/w3css/4/w3.css);
+@import url(https://fonts.googleapis.com);
+@import url(https://fonts.gstatic.com);
+@import url(https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap);
+@import url(https://unpkg.com/purecss@2.0.6/build/pure-min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+#menu {
+  background-color: teal;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+#menu li {
+  width: 150px;
+  display: inline-table;
+  position: relative;
+  text-align: center;
+  line-height: 1.5em;
+  padding: 20px 0 20px 0;
+  cursor: pointer;
+}
+#menu li a {
+  list-style-type: none;
+  color: white;
+  text-decoration: none;
+}
+.submenu {
+  padding: 0;
+  margin-top: 20px;
+  text-align: center;
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 128, 128, 0.856);
+  z-index: 1;
+}
+/* display submenu CSS */
+/* #menu > li:hover .submenu {
+    display: block;
+  } */
+a {
+  text-decoration: none;
+}
+#menu li:hover {
+  background-color: rgba(16, 199, 199, 0.541);
+}
+h1 a:hover,
+heading i:hover {
+  color: #f08080;
+}
+heading i {
+  color: #2f718f;
+}
+#menu li a,
+.submenu li a {
+  display: block;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .slide {
+    max-height: 250px !important;
+  }
+}
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: teal;
+  border-radius: 2px;
+  border-left: 4px solid;
+  padding: 20px 0;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  min-width: 350px;
+  height: 60px;
+  position: relative;
+  margin: auto;
+  transition: all linear 0.3;
+  z-index: 9999;
+}
+@keyframes floatIn {
+  from {
+    transform: translateX(calc(100% + 32px));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+.toast__logo {
+  font-size: 24px;
+  padding: 0 16px;
+}
+.toast__content {
+  flex: 1;
+}
+.toast__close {
+  font-size: 24px;
+  padding: 0 16px;
+  color: #fff;
+  cursor: pointer;
+}
+.toast + .toast {
+  margin-top: 20px;
+}
+.toast__title {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.toast__msg {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.toast__title,
+.toast__msg {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+.toast--success .toast__logo {
+  color: #47d864;
+}
+.toast--success {
+  border-color: #47d864;
+}
+.toast--error .toast__logo {
+  color: #ff623d;
+}
+.toast--error {
+  border-color: #ff623d;
+}
+#toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+}

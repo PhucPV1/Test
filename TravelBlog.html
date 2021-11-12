@@ -6,76 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel='shortcut icon' href='https://i0.wp.com/www.stuckinsand.com/wp-content/uploads/2017/06/cropped-stuck-in-sand-favicon.png?fit=512%2C512&ssl=1' />
     <title>Travel Blog</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
-      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <style>
-      #menu {
-        background-color: teal;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        height: auto;
-      }
-      #menu li {
-        width: 150px;
-        display: inline-table;
-        position: relative;
-        text-align: center;
-        line-height: 1.5em;
-        padding: 20px 0 20px 0;
-        cursor: pointer;
-      }
-      #menu li a {
-        list-style-type: none;
-        color: white;
-        text-decoration: none;
-      }
-      .submenu {
-        padding: 0;
-        margin-top: 20px;
-        text-align: center;
-        display: none;
-        position: absolute;
-        background-color: rgba(0, 128, 128, 0.856);
-        z-index: 1;
-      }
-      /* display submenu CSS */
-      /* #menu > li:hover .submenu {
-        display: block;
-      } */
-      a {
-        text-decoration: none;
-      }
-      #menu li:hover {
-        background-color:rgba(16, 199, 199, 0.541)
-      }
-      h1 a:hover, i:hover {
-        color: #F08080
-      }
-      i {
-        color: #2f718f
-      }
-      #menu li a,.submenu li a {
-        display:block;
-        width: 100%;
-      }
-      @media screen and (max-width: 767px) {
-        .slide {max-height: 250px !important}
-      }
-    </style>
+    <link rel="stylesheet" href="TravelBlog.css">
   </head>
   <body>
     <!-- Heading -->
-    <div class="w3-container w3-row w3-center">
+    <heading class="w3-container w3-row w3-center">
       <div class="w3-col l2">
         <a target="_blank" href="https://www.facebook.com/"
           ><i style="cursor: pointer" class="fa fa-facebook w3-xlarge"></i
@@ -109,9 +44,9 @@
           class="fa fa-plane w3-xlarge"
         ></i>
       </div>
-    </div>
+    </heading>
     <!-- Menu -->
-    <div>
+    <nav>
       <ul id="menu">
         <li>
           <a href="">Menu</a>
@@ -129,8 +64,10 @@
         </ul>
         </li>
         <li onclick="openmodal()"><a>Login</a></li>
+        <li onclick="toastsuccess()"><a>For Members</a></li>
+        <li onclick="toasterror()"><a>Discovery</a></li>
       </ul>
-    </div>
+    </nav>
     <!-- Modal, login -->
     <div id="modal" class="w3-modal">
       <div
@@ -211,6 +148,8 @@
         </p>
       </div>
     </div>
+    <div id="toast"></div>
+    <div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -266,6 +205,60 @@
         }
         )
       })
+      function toast({ title, message, type, duration }) {
+        const main = document.getElementById("toast")
+        if (main) {
+          const toast_content = document.createElement("div")
+          const icons = {
+            success: "fas fa-check-circle",
+            error: "fas fa-exclamation-triangle",
+          }
+          const icon = icons[type]
+          const delay = duration / 1000
+          toast_content.classList.add("toast", `toast--${type}`)
+          toast_content.style.animation = `floatIn ease 0.3s, fadeOut linear ${delay}s forwards`
+          //auto remove toast
+          const autoRemoveId = setTimeout(() => {
+            main.removeChild(toast_content)
+          }, 7000)
+          //remove toast when click
+          toast_content.onclick = (d) => {
+            if (d.target.closest(".toast__close")) {
+              main.removeChild(toast_content)
+              clearTimeout(autoRemoveId)
+            }
+          }
+          toast_content.innerHTML = `
+            <div class="toast__logo">
+                <i class="${icon}"></i>
+            </div>
+            <div class="toast__content">
+                <h3 class="toast__title">${title}</h3>
+                <p class="toast__msg">${message}</p>
+            </div>
+            <div class="toast__close">
+                <i class="fas fa-times"></i>
+            </div>
+            `
+          main.appendChild(toast_content)
+        }
+      }
+      toastsuccess = () => {
+        toast({
+          title: "Success",
+          message: "Any one with access can view your journey",
+          type: "success",
+          duration: 10000,
+        })
+      }
+      toasterror = () => {
+        toast({
+          title: "Error",
+          message: "Please login first",
+          type: "error",
+          duration: 10000,
+        })
+      }
     </script>
   </body>
 </html>
