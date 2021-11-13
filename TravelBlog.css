@@ -47,7 +47,27 @@ a {
   background-color: rgba(16, 199, 199, 0.541);
 }
 h1 a:hover,
-heading i:hover {
+heading .w3-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+heading {
+  margin: 0;
+  padding: 0;
+}
+heading h1 {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  transform: translateY(20%);
+}
+heading i:hover,
+heading a:hover {
   color: #f08080;
 }
 heading i {
@@ -65,8 +85,9 @@ heading i {
     overflow: hidden;
   }
   .pure-form {
-    width: fit-content;
+    width: 300px;
     margin: auto;
+    width: fit-content;
   }
   .w3-modal-content {
     width: fit-content !important;
@@ -75,7 +96,28 @@ heading i {
   #menu li {
     width: 115px;
   }
+  heading .w3-container {
+    margin-top: 0;
+    top: 0;
+    padding: 0;
+  }
+  heading h1 {
+    margin: 0;
+    padding: 0;
+  }
+  heading .w3-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .toast {
+    left: 20px;
+  }
+  heading h1 {
+    transform: translateY(0);
+  }
 }
+
 .toast {
   display: flex;
   align-items: center;
