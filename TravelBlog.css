@@ -72,6 +72,9 @@ heading i {
     width: fit-content !important;
     margin: 25% auto;
   }
+  #menu li {
+    width: 115px;
+  }
 }
 .toast {
   display: flex;
