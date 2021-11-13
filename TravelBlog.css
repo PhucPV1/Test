@@ -62,6 +62,14 @@ heading i {
   .slide {
     max-height: 250px !important;
   }
+  .pure-form {
+    width: fit-content;
+    margin: auto;
+  }
+  .w3-modal-content {
+    width: fit-content !important;
+    margin: 25% auto;
+  }
 }
 .toast {
   display: flex;
