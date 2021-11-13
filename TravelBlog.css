@@ -61,6 +61,7 @@ heading i {
 @media screen and (max-width: 767px) {
   .slide {
     max-height: 250px !important;
+    overflow: hidden;
   }
   .pure-form {
     width: fit-content;
