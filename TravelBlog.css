@@ -58,9 +58,10 @@ heading i {
   display: block;
   width: 100%;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 926px) {
   .slide {
-    max-height: 250px !important;
+    width: 100% !important;
+    height: 200px !important;
     overflow: hidden;
   }
   .pure-form {
