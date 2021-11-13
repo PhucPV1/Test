@@ -15,6 +15,11 @@
     "h4 h5 h2 h3"
     "h4 h5 h6 h6";
 }
+@media screen and (max-width: 1023px) {
+  #main {
+    grid-template-rows: 175px 50px 175px;
+  }
+}
 img {
   height: 100%;
   width: 100%;
