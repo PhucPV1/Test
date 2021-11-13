@@ -92,7 +92,7 @@ heading i {
 @media screen and (max-width: 926px) {
   .slide {
     width: 100% !important;
-    height: 200px !important;
+    height: 270px !important;
     overflow: hidden;
   }
   .pure-form {
