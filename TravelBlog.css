@@ -213,7 +213,7 @@ img {
 }
 /* modal */
 #modal {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   margin: 0;
