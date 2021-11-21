@@ -1,6 +1,4 @@
 @import url(https://www.w3schools.com/w3css/4/w3.css);
-@import url(https://fonts.googleapis.com);
-@import url(https://fonts.gstatic.com);
 @import url(https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap);
 @import url(https://unpkg.com/purecss@2.0.6/build/pure-min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css);
@@ -14,7 +12,7 @@ i + i {
   padding-left: 20px;
 }
 #menu {
-  background-color: teal;
+  background-color: rgb(14, 145, 145);
   text-align: center;
   margin: 0;
   padding: 0;
@@ -53,7 +51,7 @@ a {
 #menu li:hover {
   background-color: rgba(16, 199, 199, 0.541);
 }
-h1 a:hover,
+h1 a,
 heading .w3-col {
   display: flex;
   align-items: center;
@@ -94,15 +92,6 @@ heading i {
     width: 100% !important;
     height: 270px !important;
     overflow: hidden;
-  }
-  .pure-form {
-    width: 300px;
-    margin: auto;
-    width: fit-content;
-  }
-  .w3-modal-content {
-    width: fit-content !important;
-    margin: 25% auto;
   }
   #menu li {
     width: 115px;
@@ -213,19 +202,88 @@ heading i {
   top: 32px;
   right: 32px;
 }
-.w3-modal-content {
-  width: max-content;
-  padding: 15px 30px 15px 30px;
-}
 h3 {
   margin-bottom: 0;
-}
-.modal_closeButton {
-  font-size: 27px;
 }
 img {
   object-fit: cover;
   width: 100%;
   height: auto;
   max-height: 600px;
+}
+/* modal */
+#modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.modal-content {
+  background-color: #fff;
+  padding: 0 2% 1.2% 2%;
+  margin: 0;
+}
+#modal .heading,
+#modal .desc {
+  text-align: center;
+  color: #2f718f;
+}
+#modal .heading {
+  font-weight: 700;
+  font-size: 2rem;
+}
+#modal .desc {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.form-group label {
+  font-weight: 600;
+  color: #2f718f;
+}
+#modal .desc {
+  color: #636d77;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.form-submit {
+  outline: none;
+  background-color: #1dbfaf;
+  margin-top: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.form-control {
+  height: 2.7rem;
+  border: 1px solid #b3b3b3;
+  border-radius: 3px;
+  outline: none;
+  font-size: 0.9rem;
+  margin-top: -5px;
+  padding: 10px 12px 10px 12px;
+}
+.form-control:hover {
+  border-color: #1dbfaf;
+}
+
+.form-group.invalid .form-control {
+  border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+  color: #f33a58;
+}
+.form-submit:hover {
+  background-color: #1ac7b6;
 }
