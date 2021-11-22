@@ -119,6 +119,8 @@ function Validator(options) {
                 Validator.isConfirmPassword(options.passwordConfirmationSelector)
               )
               break
+            default:
+              break
           }
         }
       })

@@ -87,37 +87,6 @@ heading i {
   display: block;
   width: 100%;
 }
-@media screen and (max-width: 926px) {
-  .slide {
-    width: 100% !important;
-    height: 270px !important;
-    overflow: hidden;
-  }
-  #menu li {
-    width: 115px;
-  }
-  heading .w3-container {
-    margin-top: 0;
-    top: 0;
-    padding: 0;
-  }
-  heading h1 {
-    margin: 0;
-    padding: 0;
-  }
-  heading .w3-col {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .toast {
-    left: 20px;
-  }
-  heading h1 {
-    transform: translateY(0);
-  }
-}
-
 .toast {
   display: flex;
   align-items: center;
@@ -221,6 +190,7 @@ img {
 }
 .modal-content {
   background-color: #fff;
+  border: 1px #1ac7b6 solid;
   padding: 0 2% 1.2% 2%;
   margin: 0;
 }
@@ -241,6 +211,7 @@ img {
 .form-group label {
   font-weight: 600;
   color: #2f718f;
+  margin-bottom: -2px;
 }
 #modal .desc {
   color: #636d77;
@@ -283,7 +254,67 @@ img {
 
 .form-group.invalid .form-message {
   color: #f33a58;
+  margin-top: -5px;
+  font-size: 0.8rem;
 }
 .form-submit:hover {
   background-color: #1ac7b6;
+}
+@media screen and (max-width: 926px) {
+  .slide {
+    width: 100% !important;
+    height: 270px !important;
+    overflow: hidden;
+  }
+  #menu li {
+    width: 115px;
+  }
+  heading .w3-container {
+    margin-top: 0;
+    top: 0;
+    padding: 0;
+  }
+  heading h1 {
+    margin: 0;
+    padding: 0;
+  }
+  heading .w3-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .toast {
+    left: 20px;
+  }
+  heading h1 {
+    transform: translateY(0);
+  }
+}
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .form-control {
+    height: 2rem;
+    margin-top: 5px;
+  }
+  .form-control {
+    margin-top: 0;
+    height: 2.3rem;
+  }
+}
+/* Mobile */
+@media (max-width: 739px) {
+  .modal-content {
+    padding: 0 4% 2.5% 4%;
+  }
+  .form-control {
+    height: 2rem;
+    margin-top: -5px;
+  }
+  .form-control {
+    margin-top: 0;
+    height: 2.3rem;
+  }
+  .form-group.invalid .form-message {
+    margin-top: 2px;
+  }
 }
