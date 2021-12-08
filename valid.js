@@ -262,5 +262,6 @@ Validator({
         alert("Tài khoản của bạn đã được tạo thành công, sẽ được chuyển sang trang đăng nhập")
         window.location = "../login"
       })
+      .catch(alert("Có lỗi xảy ra khi gửi dữ liệu lên server, vui lòng thử lại"))
   },
 })
