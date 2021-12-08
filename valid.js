@@ -77,8 +77,12 @@ function Validator(options) {
             }
             return values
           }, {})
-          options.onSubmit(outputValues)
-          // submit with html default
+          if (recaptcha_response) {
+            options.onSubmit(outputValues)
+          } else {
+            errorFormGroupCaptcha.classList.add("invalid")
+            formMessageElement.innerText = options.captchaErrorMessage
+          }
         } else {
           formElement.submit()
         }
@@ -113,7 +117,7 @@ function Validator(options) {
               validate(inputElement, rule)
               break
             // auto validate confirm password when changing password
-            case options.password_Name:
+            case options.passwordName:
               validate(
                 formElement.querySelector(options.passwordConfirmationSelector),
                 Validator.isConfirmPassword(options.passwordConfirmationSelector)
@@ -126,6 +130,9 @@ function Validator(options) {
       })
     })
   }
+  var captchaElement = document.querySelector(".g-recaptcha")
+  var errorFormGroupCaptcha = getParent(captchaElement, options.formGroupSelector)
+  var formMessageElement = errorFormGroupCaptcha.querySelector(options.errorSelector)
 }
 /* Rules */
 Validator.isRequired = function (selector, message) {
@@ -136,12 +143,41 @@ Validator.isRequired = function (selector, message) {
     },
   }
 }
+Validator.isName = function (selector, message) {
+  return {
+    selector: selector,
+    check: function (value) {
+      var regexName =
+        /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/iu
+      return regexName.test(value) ? undefined : message || "Please enter a valid name"
+    },
+  }
+}
 Validator.isEmail = function (selector, message) {
   return {
     selector: selector,
     check: function (value) {
       var regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       return regexEmail.test(value) ? undefined : message || "Please enter a valid email"
+    },
+  }
+}
+Validator.isPhoneNumber = function (selector, message) {
+  return {
+    selector: selector,
+    check: function (value) {
+      var regexPhone = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/
+      return regexPhone.test(value) ? undefined : message || "Please enter a valid email"
+    },
+  }
+}
+Validator.isAddress = function (selector, message) {
+  return {
+    selector: selector,
+    check: function (value) {
+      var regexAddress =
+        /^[0-9A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][0-9a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ \/\-]*[0-9A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][0-9a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/iu
+      return regexAddress.test(value) ? undefined : message || "Please enter a valid address"
     },
   }
 }
@@ -161,3 +197,52 @@ Validator.isConfirmPassword = function (selector, checkConfirm, message) {
     },
   }
 }
+/* Validate google captcha */
+var recaptcha_response = false
+function validateCaptcha() {
+  recaptcha_response = true
+  var errorFormGroupCaptcha = document.querySelector(".g-recaptcha").parentElement
+  var formMessageElement = errorFormGroupCaptcha.querySelector(".form-message")
+  errorFormGroupCaptcha.classList.remove("invalid")
+  formMessageElement.innerText = ""
+}
+
+/* =========================================================================================== */
+
+Validator({
+  idForm: "#form",
+  formGroupSelector: ".form-group",
+  errorSelector: ".form-message",
+  passwordSelector: "#password",
+  passwordConfirmationSelector: "#password_confirmation",
+  passwordName: "password",
+  // selectOption_Name: "province",
+  rules: [
+    Validator.isRequired("#fullname", "Họ và tên không được để trống"),
+    Validator.isRequired("#email", "Email không được để trống"),
+    Validator.isRequired("#phone_number", "Số điện thoại không được để trống"),
+    Validator.isRequired("#password", "Mật khẩu không được để trống"),
+    Validator.isRequired("#password_confirmation", "Vui lòng xác nhận lại mật khẩu"),
+    //   Validator.isRequired("#province"),
+    // Validator.isRequired("input[name='gender']"),
+    // Validator.isRequired("#avatar"),
+    Validator.isName("#fullname", "Vui lòng nhập lại họ và tên hợp lệ"),
+    Validator.isEmail("#email", "Vui lòng nhập lại email hợp lệ"),
+    Validator.isPhoneNumber("#phone_number", "Vui lòng nhập lại số điện thoại hợp lệ "),
+    // Validator.isAddress("#address"),
+    Validator.isMinLength("#password", 6, "Vui lòng nhập lại mật khẩu độ dài trên 6 ký tự"),
+    Validator.isConfirmPassword(
+      "#password_confirmation",
+      () => {
+        return document.querySelector("#form #password").value
+      },
+      "Vui lòng nhập lại password trùng khớp"
+    ),
+  ],
+  captchaErrorMessage: "Vui lòng nhập captcha",
+  onSubmit: function (data) {
+    // call API
+    alert("Tài khoản của bạn đã được tạo thành công")
+    console.log(data)
+  },
+})
