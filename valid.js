@@ -77,12 +77,17 @@ function Validator(options) {
             }
             return values
           }, {})
-          if (recaptcha_response) {
+          if (options.captchaRequired == "no") {
             options.onSubmit(outputValues)
           } else {
-            errorFormGroupCaptcha.classList.add("invalid")
-            formMessageElement.innerText = options.captchaErrorMessage
+            if (recaptcha_response) {
+              options.onSubmit(outputValues)
+            } else {
+              errorFormGroupCaptcha.classList.add("invalid")
+              formMessageElement.innerText = options.captchaErrorMessage
+            }
           }
+          // submit with default html
         } else {
           formElement.submit()
         }
@@ -207,7 +212,7 @@ function validateCaptcha() {
   formMessageElement.innerText = ""
 }
 
-/* =========================================================================================== */
+/* ================================================================================================= */
 
 Validator({
   idForm: "#form",
@@ -217,6 +222,7 @@ Validator({
   passwordConfirmationSelector: "#password_confirmation",
   passwordName: "password",
   // selectOption_Name: "province",
+  captchaRequired: "yes",
   rules: [
     Validator.isRequired("#fullname", "Họ và tên không được để trống"),
     Validator.isRequired("#email", "Email không được để trống"),
@@ -241,7 +247,6 @@ Validator({
   ],
   captchaErrorMessage: "Vui lòng nhập captcha",
   onSubmit: function (data) {
-    alert("Tài khoản của bạn đã được tạo thành công")
     // Post method API
     var api = "http://localhost:3000/users"
     var options = {
@@ -251,6 +256,11 @@ Validator({
       },
       body: JSON.stringify(data),
     }
-    fetch(api, options).then((response) => response.json())
+    fetch(api, options)
+      .then((response) => response.json())
+      .then(() => {
+        alert("Tài khoản của bạn đã được tạo thành công, sẽ được chuyển sang trang đăng nhập")
+        window.location = "../login"
+      })
   },
 })
