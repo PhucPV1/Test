@@ -241,8 +241,16 @@ Validator({
   ],
   captchaErrorMessage: "Vui lòng nhập captcha",
   onSubmit: function (data) {
-    // call API
     alert("Tài khoản của bạn đã được tạo thành công")
-    console.log(data)
+    // Post method API
+    var api = "http://localhost:3000/users"
+    var options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+    fetch(api, options).then((response) => response.json())
   },
 })
