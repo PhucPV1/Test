@@ -53,7 +53,7 @@ function Validator(options) {
       if (isFormValid) {
         // submit with js
         if (typeof options.onSubmit === "function") {
-          var validInputs = formElement.querySelectorAll("[name]:not([disabled])")
+          var validInputs = formElement.querySelectorAll("[name]:not([disabled]):not(#g-recaptcha-response)")
           var outputValues = Array.from(validInputs).reduce(function (values, input) {
             switch (input.type) {
               case "radio":
